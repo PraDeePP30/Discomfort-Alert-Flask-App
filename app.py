@@ -274,9 +274,12 @@ def create_heatmap(df, timestamp, location):
     for i, trace in enumerate(fig.data):
         trace.visible = (i == 0)
 
+    # Set the initial x-axis range to show only 12 hours
+    initial_x_range = [-0.5, 11.5]  # Shows only the first 12 points
+
     fig.update_layout(
         title=titles[0],
-        xaxis=dict(nticks=24, title='Hour'),
+        xaxis=dict(nticks=24, title='Hour', range=initial_x_range),
         yaxis=dict(title='Date'),
         annotations=annotations_list[0],
         template='plotly_dark',
@@ -307,7 +310,7 @@ def create_heatmap(df, timestamp, location):
                 font=dict(color='black')
             )
         ],
-        xaxis=dict(title='Hour'),
+        xaxis=dict(title='Hour', range=initial_x_range),
         yaxis=dict(title='Date'),
     )
 
