@@ -23,28 +23,11 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            overflow-y: scroll;
+            /* overflow-y: scroll; */
             color: #FFFFFF;
             font-family: "Varela", sans-serif;
             font-weight: 400;
             font-style:normal;
-        }
-
-        body::-webkit-scrollbar {
-            width: 5px; /* width of the scrollbar */
-        }
-
-        body::-webkit-scrollbar-track {
-            background: #f1f1f1; /* background color of the track */
-        }
-
-        body::-webkit-scrollbar-thumb {
-            background: #888; /* color of the scroll thumb */
-            border-radius: 10px; /* roundness of the scroll thumb */
-        }
-
-        body::-webkit-scrollbar-thumb:hover {
-            background: #555; /* color of the scroll thumb on hover */
         }
 
         .container-wrapper {
@@ -98,7 +81,7 @@
             padding-bottom: 20px;                                       /* To prevent the last container from being hidden */
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(255, 255, 255, 0.2);
-            color: #B3B3B3;
+            color: #FFFFFF;
             /* overflow-y: scroll; */
         }
         .container2 .container-wrapper2 {
@@ -113,6 +96,24 @@
             padding: 0%;
             gap: 0.25%;
             overflow-y: scroll;
+        }
+
+        .container2 .container-wrapper2::-webkit-scrollbar {
+            width: 5px; /* width of the scrollbar */
+        }
+
+        .container2 .container-wrapper2::-webkit-scrollbar-track {
+            background: #f1f1f1; /* background color of the track */
+            border-radius: 10px; /* roundness of the scrollbar */
+        }
+
+        .container2 .container-wrapper2::-webkit-scrollbar-thumb {
+            background: #888; /* color of the scroll thumb */
+            border-radius: 10px; /* roundness of the scroll thumb */
+        }
+
+        .container2 .container-wrapper2::-webkit-scrollbar-thumb:hover {
+            background: #555; /* color of the scroll thumb on hover */
         }
         
         .container2 .container-wrapper2 .container3{
@@ -213,7 +214,7 @@
             padding: 5px;
             /* margin-right: 40px; */
             border: 1px solid #ccc;
-            border-radius: 10px;
+            border-radius: 4px;
             text-align: center;
             /* font-size: 15px; */
         }
@@ -224,7 +225,7 @@
             background-color: #28a745;
             color: white;
             border: none;
-            border-radius: 10px;
+            border-radius: 4px;
             /* font-size: 15px; */
             cursor: pointer;
         }
@@ -241,7 +242,7 @@
         }
         .alert, .message {
             margin-top: 15px;
-            padding: 10px;
+            padding: 7px;
             background-color: #ffcc00;
             color: black;
             text-align: center;
@@ -255,6 +256,8 @@
             /* padding-left: 40px; */
             max-width: 100%;
             margin-bottom: 20px;
+            background-color: #181818;
+            color: #FFFFFF;
         }
 
         /* Webkit Scrollbar Styles */
@@ -264,6 +267,7 @@
 
         .message::-webkit-scrollbar-track {
             background: #f1f1f1; /* background color of the track */
+            border-radius: 10px; /* roundness of the scrollbar */
         }
 
         .message::-webkit-scrollbar-thumb {
@@ -298,7 +302,7 @@
     </div>
 
     <div id="container2" class="container2" style="justify-content: center;">
-        <h3 id="analysisTextbox" style="display: block;">Forecast to see the analyis</h3>
+        <h3 id="analysisTextbox" style="display: block; color: #b3b3b3;">Forecast to see the analyis</h3>
         <div id="container-wrapper2" class="container-wrapper2" style="display: none;">
             <div class="container3">
                 <img id="diPlot" alt="DI Plot" style="display: none;">
@@ -348,6 +352,7 @@
                 showAlert(data.error);
             } else {
                 document.getElementById('container2').style.justifyContent = 'start';
+                document.getElementById('analysisTextbox').style.color = '#FFFFFF';
                 document.getElementById('analysisTextbox').textContent = `Forecast analysis for ${data.location}`;
                 document.getElementById('container-wrapper2').style.display = 'flex';
                 document.getElementById('diPlot').src = `/static/${data.di_plot_file}`;
@@ -366,9 +371,9 @@
                 
                 const formattedMessage = data.sms_message
                 .replace(/No discomfort expected at the following hours:/g, '<br><strong>No discomfort expected at the following hours:</strong><br>')
-                .replace(/Mild discomfort expected at the following hours:/g, '<hr><br><strong>Mild discomfort expected at the following hours:</strong><br>')
-                .replace(/Moderate discomfort expected at the following hours:/g, '<hr><br><strong>Moderate discomfort expected at the following hours:</strong><br>')
-                .replace(/Severe discomfort expected at the following hours:/g, '<hr><br><strong>Severe discomfort expected at the following hours:</strong><br>')
+                .replace(/Mild discomfort expected at the following hours:/g, '<br><strong>Mild discomfort expected at the following hours:</strong><br>')
+                .replace(/Moderate discomfort expected at the following hours:/g, '<br><strong>Moderate discomfort expected at the following hours:</strong><br>')
+                .replace(/Severe discomfort expected at the following hours:/g, '<br><strong>Severe discomfort expected at the following hours:</strong><br>')
                 .replace(/, /g, '<br>');
                 showMsg(formattedMessage);
             }
