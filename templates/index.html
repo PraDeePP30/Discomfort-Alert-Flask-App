@@ -215,7 +215,7 @@
             /* margin-right: 40px; */
             border: 1px solid #ccc;
             border-radius: 4px;
-            text-align: center;
+            /* text-align: center; */
             /* font-size: 15px; */
         }
         button {
@@ -252,6 +252,7 @@
         .message {
             overflow-y: scroll;
             padding-top: 0px;
+            padding-bottom: 15px;
             /* padding-right: 40px; */
             /* padding-left: 40px; */
             max-width: 100%;
@@ -374,7 +375,8 @@
                 .replace(/Mild discomfort expected at the following hours:/g, '<br><strong>Mild discomfort expected at the following hours:</strong><br>')
                 .replace(/Moderate discomfort expected at the following hours:/g, '<br><strong>Moderate discomfort expected at the following hours:</strong><br>')
                 .replace(/Severe discomfort expected at the following hours:/g, '<br><strong>Severe discomfort expected at the following hours:</strong><br>')
-                .replace(/, /g, '<br>');
+                .replace(/, /g, '<br>')
+                .replace(/.\n/g, '<br><hr>');
                 showMsg(formattedMessage);
             }
         })
