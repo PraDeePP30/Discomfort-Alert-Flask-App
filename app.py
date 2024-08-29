@@ -74,11 +74,11 @@ def send_sms_alert(phone):
     # Combine all messages into one and send SMS
     
     # print(message)
-    # client.messages.create(
-    #     body=message,
-    #     from_=twilio_phone_number,
-    #     to=client_phone_number
-    # )
+    client.messages.create(
+        body=message,
+        from_=twilio_phone_number,
+        to=client_phone_number
+    )
 
     status+=''.join('SMS alert sent!')
     print("SMS alert sent!")
